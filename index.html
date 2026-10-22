@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>文玩盘玩记录</title><link rel="stylesheet" href="style.css"></head>
+<body><header><h1>📿 文玩盘玩记录</h1><p class="sub">记录每一串的包浆变化</p></header>
+<main>
+<section id="listView">
+ <div class="bar"><button id="addStrandBtn">＋ 新建手串</button>
+ <button id="exportBtn" class="ghost">导出备份</button>
+ <label class="ghost btnlike">导入备份<input type="file" id="importFile" accept="application/json" hidden></label></div>
+ <div id="strandList"></div>
+</section>
+<section id="detailView" hidden>
+ <div class="bar"><button id="backBtn" class="ghost">← 返回</button><button id="editStrandBtn" class="ghost">编辑</button><button id="delStrandBtn" class="danger">删除</button></div>
+ <div class="card" id="strandInfo"></div>
+ <div class="card"><h3>颜色变化时间线</h3><div id="swatches" class="swatches"></div>
+ <canvas id="chart" width="600" height="220"></canvas><p class="legend"><span class="l1">■ 色相</span> <span class="l2">■ 亮度</span></p></div>
+ <div class="bar"><button id="addLogBtn">＋ 添加记录</button></div>
+ <div id="logList"></div>
+</section>
+</main>
+<dialog id="strandDlg"><form method="dialog" id="strandForm"><h3>手串信息</h3>
+<label>名称<input name="sname" required></label>
+<label>材质<input name="material" list="mats" required></label>
+<datalist id="mats"><option>百香籽</option><option>金刚菩提</option><option>星月菩提</option><option>凤眼菩提</option><option>小叶紫檀</option><option>橄榄核</option></datalist>
+<label>开盘日期<input type="date" name="start" required></label>
+<label>备注<textarea name="notes" rows="2"></textarea></label>
+<div class="bar"><button value="cancel" formnovalidate class="ghost">取消</button><button value="ok">保存</button></div></form></dialog>
+<dialog id="logDlg"><form method="dialog" id="logForm"><h3>盘玩记录</h3>
+<label>日期<input type="date" name="date" required></label>
+<div class="row"><label>盘玩时长(分钟)<input type="number" min="0" name="play" value="0"></label>
+<label>佩戴时长(分钟)<input type="number" min="0" name="wear" value="0"></label></div>
+<div class="tags" id="tagBox"></div>
+<label>照片<input type="file" accept="image/*" name="photo"></label><img id="preview" hidden>
+<label>备注<textarea name="notes" rows="2"></textarea></label>
+<div class="bar"><button value="cancel" formnovalidate class="ghost">取消</button><button value="ok">保存</button></div></form></dialog>
+<script src="app.js"></script></body></html>
